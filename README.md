@@ -1,22 +1,25 @@
 🔲 Gerador de QR Code
 
-Backend para geração de QR Codes com upload automático para AWS S3.
+Aplicação backend em Spring Boot para gerar QR Codes e armazená-los automaticamente na AWS S3.
 
-API REST desenvolvida em Spring Boot capaz de gerar QR Codes a partir de qualquer texto, enviar o arquivo diretamente para um bucket S3 e retornar uma URL pública para acesso à imagem.
+<div align="center">
 
+
+</div>
 📋 Sobre o Projeto
 
-Este projeto integra o meu portfólio backend e demonstra domínio prático em:
+Este backend gera QR Codes a partir de texto, envia automaticamente para um bucket AWS S3 e retorna uma URL pública para consumo imediato.
+O projeto foi criado como peça de portfólio para demonstrar domínio em:
 
-Construção de APIs REST com Spring Boot
-
-Integração com serviços AWS (S3)
+Desenvolvimento de APIs REST com Spring Boot
 
 Arquitetura Hexagonal (Ports and Adapters)
 
+Integração com AWS S3
+
 Containerização com Docker
 
-Boas práticas na plataforma Java
+Boas práticas em Java moderno
 
 🚀 Tecnologias Utilizadas
 
@@ -26,35 +29,35 @@ Spring Boot 3.4.12
 
 Maven
 
-ZXing (geração de QR Codes)
+ZXing (Zebra Crossing)
 
-AWS SDK for Java 2.x
+AWS SDK 2.x
 
 Docker
 
 ⚙️ Funcionalidades
 
-Geração de QR Codes a partir de texto
+Gera QR Codes a partir de texto
 
-Upload automático para bucket S3
+Upload automático para AWS S3
 
-URL pública retornada na resposta
+URL pública pronta para compartilhamento
 
-API REST organizada e documentada
+API REST simples e objetiva
 
-Execução via Docker
+Execução local ou via Docker
 
 📦 Pré-requisitos
 
-Java JDK 21
+Java 21+
 
 Maven 3.8+
 
 Docker (opcional)
 
-Conta AWS com bucket S3 configurado
+Conta AWS com um bucket S3 configurado
 
-🔧 Configuração
+🔧 Configuração do Projeto
 1. Clone o repositório
 git clone https://github.com/seu-usuario/gerador-qrcode.git
 cd gerador-qrcode
@@ -67,27 +70,27 @@ spring.application.name=Gerador.Qrcode
 aws.s3.region=us-east-1
 aws.s3.bucket-name=seu-bucket-name
 
-3. Defina as credenciais da AWS
+3. Configure suas credenciais AWS
 export AWS_ACCESS_KEY_ID=sua-access-key
 export AWS_SECRET_ACCESS_KEY=sua-secret-key
 
 ▶️ Como Executar
-Execução local
+Rodar localmente
 
 Compilar:
 
 mvn clean install
 
 
-Rodar:
+Executar:
 
 mvn spring-boot:run
 
 
-Aplicação disponível em:
+A API estará disponível em:
 http://localhost:8080
 
-Execução com Docker
+Rodar com Docker
 
 Build da imagem:
 
@@ -96,23 +99,23 @@ docker build -t gerador-qrcode \
 --build-arg AWS_SECRET_ACCESS_KEY=sua-secret .
 
 
-Executar o container:
+Executar container:
 
 docker run -p 8080:8080 gerador-qrcode
 
 📡 Endpoints da API
 POST /qrcode
 
-Gera um QR Code a partir de texto.
+Gera o QR Code e retorna a URL pública do S3.
 
-Request Body:
+Body:
 
 {
   "text": "https://seusite.com.br"
 }
 
 
-Response:
+Resposta:
 
 {
   "url": "https://seu-bucket.s3.us-east-1.amazonaws.com/uuid-gerado.png"
@@ -131,43 +134,30 @@ src/
 │   ├── java/
 │   │   └── app/netlify/celso_portfolio/Gerador/Qrcode/
 │   │       ├── controller/
-│   │       │   └── QrCodeController.java
 │   │       ├── dto/
-│   │       │   ├── QrCodeGenerateRequest.java
-│   │       │   └── QrCodeGenerateResponse.java
 │   │       ├── service/
-│   │       │   └── QrCodeGeneratorService.java
 │   │       ├── ports/
-│   │       │   └── StoragePort.java
 │   │       └── infrastructure/
-│   │           └── S3StorageAdapter.java
 │   └── resources/
-│       └── application.properties
 └── test/
 
 Arquitetura
 
-O projeto segue Hexagonal Architecture (Ports and Adapters):
+O projeto segue Hexagonal Architecture, separando claramente:
 
-Controller: recebe requisições HTTP
+Controller — entrada HTTP
 
-Service: lógica de negócio
+Service — regras de negócio
 
-Ports: contratos da aplicação
+Ports — contratos externos
 
-Infrastructure: adaptadores concretos (S3)
+Adapters — integração S3
 
-DTOs: objetos de transferência de dados
+DTOs — transporte de dados
 
-🔐 Configuração do S3
+🔐 Configuração do Bucket S3
 
-Acesse o console AWS
-
-Crie um bucket
-
-Permita acesso público
-
-Use esta policy:
+Use a política abaixo para permitir leitura pública:
 
 {
   "Version": "2012-10-17",
@@ -191,13 +181,13 @@ mvn test
 
  Autenticação JWT
 
- Customização visual do QR Code
+ Customização do QR Code (cor, tamanho, logotipo)
 
- Documentação Swagger/OpenAPI
+ Documentação Swagger
 
  Cache de QR Codes
 
- Suporte a outros formatos de imagem
+ Suporte a outros formatos (SVG, PDF, WebP)
 
 👨‍💻 Autor
 
@@ -211,12 +201,12 @@ GitHub: @seu-usuario
 
 📄 Licença
 
-Este projeto está sob a licença MIT.
+Distribuído sob licença MIT.
 
 🙏 Agradecimentos
 
-Fernanda Kipper — inspiração do projeto
+Fernanda Kipper — inspiração na arquitetura
 
-ZXing
+ZXing — motor de QR Code
 
-Comunidade Spring Boot
+Comunidade Spring + AWS
